@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+venv/
+ 
+# Secrets (never commit API keys)
+.streamlit/secrets.toml
+.env
+ 
+# Raw synthetic data and generator binaries are large and reproducible
+data/raw/
+output/
+synthea_output/
+*.jar
+*.zip
+ 
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+ 
