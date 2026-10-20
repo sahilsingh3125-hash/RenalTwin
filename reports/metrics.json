@@ -1,0 +1,278 @@
+{
+  "generated_utc": "2026-10-18T13:13:17+00:00",
+  "nephrotwin_version": "1.0.0",
+  "data_source": "Synthea CSV export: synthea_s42/csv, synthea_s7/csv",
+  "data_provenance": "Synthea v4.0.0, Massachusetts, ages 40-85, FHIR export off; batch seed 42 (partial run) and batch seed 7 (-p 400)",
+  "ingestion": {
+    "source": "Synthea CSV export: synthea_s42/csv, synthea_s7/csv",
+    "patients_in_source": 652,
+    "creatinine_rows": 20179,
+    "patient_days_with_creatinine": 6030,
+    "removed_acute_care": 6712,
+    "removed_inconsistent": 7412,
+    "removed_after_kidney_failure": 1541,
+    "removed_implausible": 0,
+    "removed_spikes": 103,
+    "patients_in_cohort": 404,
+    "visits_in_cohort": 4274,
+    "exclusions": {
+      "under_min_age": 1,
+      "too_few_visits": 40,
+      "short_followup": 5
+    }
+  },
+  "cohort": {
+    "patients": 404,
+    "laboratory_results": 4274,
+    "median_results_per_patient": 10.0,
+    "median_followup_years": 9.017111567419576,
+    "median_age_at_entry": 54.313483915126625,
+    "female_percent": 49.75247524752475,
+    "diabetes_percent": 18.316831683168317,
+    "hypertension_percent": 38.613861386138616,
+    "ckd_g3_or_worse_at_entry_percent": 21.287128712871286,
+    "kidney_failure_events": 28,
+    "baseline_kdigo_gfr_categories": {
+      "G1": 101,
+      "G2": 217,
+      "G3a": 34,
+      "G3b": 42,
+      "G4": 10,
+      "G5": 0
+    }
+  },
+  "population_model": {
+    "n_patients": 222,
+    "n_observations": 2379,
+    "covariate_effects": {
+      "(intercept)": {
+        "starting_egfr": 84.40526199998499,
+        "slope_per_year": -0.08033564784979547
+      },
+      "age10": {
+        "starting_egfr": 4.692856498184271,
+        "slope_per_year": -0.24104310601366252
+      },
+      "diabetes": {
+        "starting_egfr": -5.4409890107471535,
+        "slope_per_year": -0.6344761125210012
+      },
+      "hypertension": {
+        "starting_egfr": -7.927148614625761,
+        "slope_per_year": 0.14677798631922745
+      },
+      "male": {
+        "starting_egfr": -4.882559096898614,
+        "slope_per_year": 0.08345698217322593
+      }
+    },
+    "between_patient_sd_level": 16.043007164571836,
+    "between_patient_sd_slope": 1.7743828891118125,
+    "level_slope_correlation": 0.0,
+    "measurement_sd": 8.116153145235643,
+    "process_noise_sd_slope_per_year": 0.0,
+    "process_noise_sd_level_per_year": 4.0,
+    "conformal_interval_scale": 0.906281616137273,
+    "em_iterations": 10,
+    "em_converged": true,
+    "tuning": {
+      "objective": "mean of next-result and one-year-ahead log predictive density",
+      "selected_q_slope": 0.0,
+      "selected_q_level": 16.0,
+      "selected_sigma_scale": 0.8,
+      "selected_score": {
+        "short": -3.825749802176398,
+        "long": -3.7442232852598223,
+        "combined": -3.78498654371811,
+        "short_mae": 6.472932363756884,
+        "long_mae": 6.655344328377304,
+        "combined_mae": 6.564138346067095
+      },
+      "static_model_score": {
+        "short": -3.8439353860373586,
+        "long": -3.74719370250651,
+        "combined": -3.7955645442719343,
+        "short_mae": 6.751401416184314,
+        "long_mae": 6.85621673852787,
+        "combined_mae": 6.803809077356092
+      },
+      "grid_size": 48,
+      "structure_selection": {
+        "selected": {
+          "ridge": 10.0,
+          "independent_effects": true,
+          "cv_mae": 6.82544732840973
+        },
+        "candidates": [
+          {
+            "ridge": 0.0,
+            "independent_effects": false,
+            "cv_mae": 6.914921463953612
+          },
+          {
+            "ridge": 0.0,
+            "independent_effects": true,
+            "cv_mae": 6.831815570147287
+          },
+          {
+            "ridge": 10.0,
+            "independent_effects": false,
+            "cv_mae": 6.917347490608446
+          },
+          {
+            "ridge": 10.0,
+            "independent_effects": true,
+            "cv_mae": 6.82544732840973
+          },
+          {
+            "ridge": 50.0,
+            "independent_effects": false,
+            "cv_mae": 6.926202634427672
+          },
+          {
+            "ridge": 50.0,
+            "independent_effects": true,
+            "cv_mae": 6.83117745577206
+          },
+          {
+            "ridge": 250.0,
+            "independent_effects": false,
+            "cv_mae": 6.930014914623849
+          },
+          {
+            "ridge": 250.0,
+            "independent_effects": true,
+            "cv_mae": 6.831668222615574
+          }
+        ],
+        "folds": 3
+      }
+    },
+    "calibration": {
+      "level": 0.8,
+      "n_scores": 582,
+      "interval_scale": 0.906281616137273
+    }
+  },
+  "validation": {
+    "split": {
+      "fitting_patients": 222,
+      "calibration_patients": 61,
+      "test_patients": 121,
+      "test_forecasts_next_visit": 1131,
+      "test_forecasts_one_year_plus": 6903
+    },
+    "next_visit": {
+      "twin": {
+        "mae": 6.793760234541714,
+        "rmse": 10.581826051890378,
+        "bias": -0.14963016428775577
+      },
+      "last_value": {
+        "mae": 6.669907292412181,
+        "rmse": 11.295559360997023,
+        "bias": -0.1730822608617748
+      },
+      "patient_mean": {
+        "mae": 7.438614448318172,
+        "rmse": 11.439875725686154,
+        "bias": -0.10848695277714132
+      },
+      "patient_ols": {
+        "mae": 8.934379540784523,
+        "rmse": 15.5703443461428,
+        "bias": 1.1323409580040644
+      },
+      "population": {
+        "mae": 19.461710808028222,
+        "rmse": 24.343864667359014,
+        "bias": 5.111322851471902
+      }
+    },
+    "one_year_plus": {
+      "twin": {
+        "mae": 8.799853530600918,
+        "rmse": 13.665842565687086,
+        "bias": 1.1939263147910981
+      },
+      "last_value": {
+        "mae": 8.571589894313451,
+        "rmse": 14.321024843867157,
+        "bias": 1.8993368207546444
+      },
+      "patient_mean": {
+        "mae": 8.835794818492486,
+        "rmse": 14.400357332360038,
+        "bias": 2.1089150129854053
+      },
+      "patient_ols": {
+        "mae": 22.146469993386887,
+        "rmse": 72.88283664124012,
+        "bias": 6.544840043607207
+      },
+      "population": {
+        "mae": 23.9513656942433,
+        "rmse": 29.132041913945216,
+        "bias": 11.747767547299615
+      }
+    },
+    "paired_comparisons": {
+      "next_visit_vs_last_value": {
+        "comparison": "twin minus last_value",
+        "mae_difference": 0.12385294212953309,
+        "ci95_lower": -0.2598146308373152,
+        "ci95_upper": 0.5189846590630345,
+        "share_of_bootstraps_favouring_twin": 0.267
+      },
+      "next_visit_vs_patient_ols": {
+        "comparison": "twin minus patient_ols",
+        "mae_difference": -2.140619306242806,
+        "ci95_lower": -2.7982778428999584,
+        "ci95_upper": -1.543737261377372,
+        "share_of_bootstraps_favouring_twin": 1.0
+      },
+      "one_year_plus_vs_last_value": {
+        "comparison": "twin minus last_value",
+        "mae_difference": 0.22826363628746607,
+        "ci95_lower": -0.4069573240298836,
+        "ci95_upper": 0.7893466121639424,
+        "share_of_bootstraps_favouring_twin": 0.2615
+      },
+      "one_year_plus_vs_patient_ols": {
+        "comparison": "twin minus patient_ols",
+        "mae_difference": -13.346616462785969,
+        "ci95_lower": -21.840162046088132,
+        "ci95_upper": -7.471367443252546,
+        "share_of_bootstraps_favouring_twin": 1.0
+      }
+    },
+    "interval_calibration": {
+      "nominal_level": 0.8,
+      "coverage_next_visit": 0.8196286472148541,
+      "coverage_one_year_plus": 0.841952774156164,
+      "mean_width_next_visit": 24.80962095229661
+    },
+    "event_prediction": {
+      "definition": "Measured eGFR below 30 about 2 years after a landmark visit with eGFR at or above it.",
+      "n_landmarks": 520,
+      "n_patients": 115,
+      "n_events": 5,
+      "event_rate": 0.009615384615384616,
+      "twin_auroc": 0.926990291262136,
+      "twin_brier": 0.009128141900931792,
+      "population_auroc": 0.5766990291262135,
+      "population_brier": 0.009735136212092018,
+      "last_value_auroc": 0.934368932038835,
+      "last_value_brier": 0.009517086804623865
+    }
+  },
+  "kfre": {
+    "eligible_patients": 27,
+    "calibration": "Non-North American recalibration (Tangri 2016)",
+    "note": "KFRE is applied at cohort entry to adults with eGFR < 60 and a urine ACR result.",
+    "mean_predicted_2yr_risk": 0.009438200165115453,
+    "evaluable_2yr": 27,
+    "observed_kidney_failure_2yr": 0
+  },
+  "runtime_seconds": 96.1
+}

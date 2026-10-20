@@ -1,0 +1,130 @@
+{
+  "covariate_names": [
+    "age10",
+    "diabetes",
+    "hypertension",
+    "male"
+  ],
+  "B": [
+    [
+      84.40526199998499,
+      -0.08033564784979547
+    ],
+    [
+      4.692856498184271,
+      -0.24104310601366252
+    ],
+    [
+      -5.4409890107471535,
+      -0.6344761125210012
+    ],
+    [
+      -7.927148614625761,
+      0.14677798631922745
+    ],
+    [
+      -4.882559096898614,
+      0.08345698217322593
+    ]
+  ],
+  "Sigma": [
+    [
+      257.3780788825033,
+      0.0
+    ],
+    [
+      0.0,
+      3.148434637172783
+    ]
+  ],
+  "sigma2": 65.87194187691843,
+  "q_level": 16.0,
+  "q_slope": 0.0,
+  "interval_scale": 0.906281616137273,
+  "robust_threshold": 3.0,
+  "ridge": 10.0,
+  "independent_effects": true,
+  "n_patients": 222,
+  "n_observations": 2379,
+  "log_likelihood": -9142.837203409945,
+  "iterations": 10,
+  "converged": true,
+  "tuning": {
+    "objective": "mean of next-result and one-year-ahead log predictive density",
+    "selected_q_slope": 0.0,
+    "selected_q_level": 16.0,
+    "selected_sigma_scale": 0.8,
+    "selected_score": {
+      "short": -3.825749802176398,
+      "long": -3.7442232852598223,
+      "combined": -3.78498654371811,
+      "short_mae": 6.472932363756884,
+      "long_mae": 6.655344328377304,
+      "combined_mae": 6.564138346067095
+    },
+    "static_model_score": {
+      "short": -3.8439353860373586,
+      "long": -3.74719370250651,
+      "combined": -3.7955645442719343,
+      "short_mae": 6.751401416184314,
+      "long_mae": 6.85621673852787,
+      "combined_mae": 6.803809077356092
+    },
+    "grid_size": 48,
+    "structure_selection": {
+      "selected": {
+        "ridge": 10.0,
+        "independent_effects": true,
+        "cv_mae": 6.82544732840973
+      },
+      "candidates": [
+        {
+          "ridge": 0.0,
+          "independent_effects": false,
+          "cv_mae": 6.914921463953612
+        },
+        {
+          "ridge": 0.0,
+          "independent_effects": true,
+          "cv_mae": 6.831815570147287
+        },
+        {
+          "ridge": 10.0,
+          "independent_effects": false,
+          "cv_mae": 6.917347490608446
+        },
+        {
+          "ridge": 10.0,
+          "independent_effects": true,
+          "cv_mae": 6.82544732840973
+        },
+        {
+          "ridge": 50.0,
+          "independent_effects": false,
+          "cv_mae": 6.926202634427672
+        },
+        {
+          "ridge": 50.0,
+          "independent_effects": true,
+          "cv_mae": 6.83117745577206
+        },
+        {
+          "ridge": 250.0,
+          "independent_effects": false,
+          "cv_mae": 6.930014914623849
+        },
+        {
+          "ridge": 250.0,
+          "independent_effects": true,
+          "cv_mae": 6.831668222615574
+        }
+      ],
+      "folds": 3
+    }
+  },
+  "calibration": {
+    "level": 0.8,
+    "n_scores": 582,
+    "interval_scale": 0.906281616137273
+  }
+}
